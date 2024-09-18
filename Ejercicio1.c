@@ -8,10 +8,10 @@ entero numIncidencias cuántas incidencias se han producido.  labora un algoritm
 que guarde en una matriz los códigos de las piezas y en otra matriz el  número
 de incidencias por pieza.
 */
+
 #include <stdio.h>
 
 int main() {
-
     int incidencias[] = {85, 72, 91, 72, 72, 37, 37, 91, 37, 72, 37, 85, 37, 91};
     int numIncidencias = 14;
 
@@ -25,6 +25,7 @@ int main() {
     int maquinas[10] = {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     };
+
     int incidenciaMaquina[10] = {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     };
@@ -35,8 +36,7 @@ int main() {
         int incidencia = incidencias[i];
         ExisteMaquina = 0;
 
-        for (int j = 0; j < 10; j++) // vemos si la incidencia ya esta registrada en
-                                     // el registro de maquinas
+        for (int j = 0; j < 10; j++) // vemos si la incidencia ya esta registrada en                            // el registro de maquinas
         {
             int maquina = maquinas[j];
 
