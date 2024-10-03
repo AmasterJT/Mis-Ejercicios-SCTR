@@ -1,3 +1,4 @@
+
 // En una factoría hay 10 máquinas idénticas, desde la máquina 1 hasta la máquina 10. Para ejecutar la próxima
 // orden de producción en una máquina determinada, se elige la máquina libre que menos órdenes ha ejecutado
 // previamente. Codifica un algoritmo en lenguaje C que determine la máquina que tiene que ejecutar la siguiente

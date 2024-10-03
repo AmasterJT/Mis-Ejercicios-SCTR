@@ -36,7 +36,7 @@ int main() {
         int incidencia = incidencias[i];
         ExisteMaquina = 0;
 
-        for (int j = 0; j < 10; j++) // vemos si la incidencia ya esta registrada en                            // el registro de maquinas
+        for (int j = 0; j < 10; j++) // vemos si la incidencia ya esta registrada en  el registro de maquinas
         {
             int maquina = maquinas[j];
 
