@@ -1,31 +1,21 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
+#include <microcontrolador.h> // Declaración de funciones entradaAnalogica() y salidaAnalogica() y
+#include <pid.h>              // Módulo que implanta un PID
 
-#include "pid.h"
-#include "microcontrolador.h"
-
-
-extern unsigned int MS; 
-
-int main(int argc, char *argv[]) {
-
-    incializaPID(0.001, 2, 0.3, 14); // inicializamos los valores T, Kp, Ki, Kd
-    unsigned int MSanterior = MS; // obtenermos el valor incial del temporizador
-
-    while(1) {
-
-        if (MS != MSanterior) { // comprobamos si ha pasado el tiempo
-            MSanterior = MS; // actualizamos el valor del temporizador
-
-            double referencia = entradaAnalogica(0);
-            double salida = entradaAnalogica(1);
-
-            double error = referencia - salida;
-            double u = actuacionPID(error);
-
-            saldiaAnalogica(u); //aplicamos la salida a la planta
+// variable MS
+int main() {
+    unsigned int MSanterior = MS; // Guarda el instante actual
+    PID pid;                      // Estructura para manejar un PID
+    inicializaPID(1, 2, 0.3, 14, -10, 10, 0, 1, 0, &pid);
+    // Inicializa el PID con período de 1 ms, Kp=2, Ki=0.3 y Kd=14
+    // y una actuación entre -10 y 10. La referencia se lee en la entrada 0,
+    // la salida de la planta en la entrada 1 y la actuación se aplica en la
+    // salida 0
+    autoajustePID(0, 1, 0, 5, 0.5, 1, &pid);
+    // Autoajuste del PID
+    while (1) {                 // Repite indefinidamente ...
+        if (MS != MSanterior) { // Si está en otro milisengundo ...
+            MSanterior = MS;    // Se prepara para el siguiente período
+            actuacionPID(&pid); // Calcula la actuación del PID y la aplica
         }
     }
-    return 0;   
 }
