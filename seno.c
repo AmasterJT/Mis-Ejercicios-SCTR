@@ -21,7 +21,7 @@ void imprimeMatrizFloat(float arr[], int n) {
     for (int i = 0; i < n; i++) {
         printf("%.2f", arr[i]);
         if ((i + 1) % 10 == 0) {  // Nueva fila cada 10 elementos
-            printf(",");
+            // printf(",");
             printf("\n");
         } else {
             printf(", ");
